@@ -1,0 +1,3 @@
+DELETE  http://localhost:4004/odata/v4/my-tables/user_information/21121547-d7cb-40a9-99b8-aa87b219486c
+Content-Type: application/json
+
