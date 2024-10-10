@@ -18,11 +18,17 @@ module.exports  =  async srv =>{
         try {
          
             var service = await cds.connect.to('cap_servs');
-
-            var response = await service.tx(req).get("Purchase_Orders")
-            console.log(response); 
-
-            return response
+            let id = {
+                JOb_NAME: "test1",
+                JOB_ID: '123'
+            }
+            let new_value = {
+                STATUS: "success",
+            }
+            var response = await service.run(UPDATE("Config_Job_Status").set(new_value).where(id))
+            return {
+                data:response
+            }
             
             
         } catch (error) {
