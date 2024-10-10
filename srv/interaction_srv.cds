@@ -1,10 +1,11 @@
-using app.myTables from '../db/interactions';
+using app.db from '../db/interactions';
 
 
-service MyTABLES {
+service catalog {
 
-    entity user_information as projection on myTables.User_data;
-    entity form_data as projection on myTables.form_data;
+    entity user_information as projection on db.User_data;
+    entity form_data as projection on db.form_data;
+    entity Purchase_Orders as projection on db.Purchase_Orders;
 
     function Get_predication() returns String;
 

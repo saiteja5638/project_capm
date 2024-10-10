@@ -1,0 +1,10 @@
+oAuth 2.0 xsuaa authentication
+
+ClientID ---
+ClientSecret --
+TokenURL --
+
+TokenURL ClientID ClientSecret -- jwt 
+
+we going jwt to url --- CRUD
+
