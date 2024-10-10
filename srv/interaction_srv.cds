@@ -1,6 +1,7 @@
 using app.db from '../db/interactions';
 
 
+
 service catalog {
 
     entity user_information as projection on db.User_data;

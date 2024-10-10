@@ -26,7 +26,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: project_capm-db
-      - name: cap-samples-uaa
+      - name: project_capm-destination
 
   - name: project_capm-db-deployer
     type: hdb
@@ -42,10 +42,8 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
-  - name: cap-samples-uaa
+  - name: project_capm-destination
     type: org.cloudfoundry.managed-service
     parameters:
-      service: xsuaa
-      service-plan: application
-      path: ./xs-security.json     
-
+      service: destination
+      service-plan: lite

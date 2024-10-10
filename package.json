@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.22.1",
     "@sap/cds": "^6.8.4",
     "@sap/cds-hana": "^2",
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
@@ -43,11 +44,23 @@
       "db": {
         "kind": "sql"
       },
-      "uaa": {
-        "kind": "xsuaa"
-      },
       "data": {
         "model": "db/quotation.cds"
+      },
+      "cap_servs": {
+        "kind": "odata-v2",
+        "model": "srv/external/cap_servs",
+        "[development]": {
+          "credentials": {
+            "url": "https://sbpbtp-vcpprovider-sc0jeojq-dev-cap-servs-srv.cfapps.us10.hana.ondemand.com/v2/catalog"
+          }
+        },
+        "[production]": {
+          "credentials": {
+            "destination": "cap_servs",
+            "path": "v2/catalog"
+          }
+        }
       }
     }
   },

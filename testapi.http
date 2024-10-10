@@ -1,6 +1,3 @@
 POST  http://localhost:4004/odata/v4/catalog/Purchase_Orders
 Content-Type: application/json
 
-{
-    
-}

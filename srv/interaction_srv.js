@@ -1,4 +1,4 @@
-
+var cds = require('@sap/cds');
 
 
 module.exports  =  async srv =>{
@@ -17,11 +17,12 @@ module.exports  =  async srv =>{
     srv.on('Get_predication',async(req,res)=>{
         try {
          
-            let get_data = await cds.run(SELECT.from("APP_MYTABLES_USER_DATA"))
+            var service = await cds.connect.to('cap_servs');
 
-            let filteredata = get_data.filter(i=> i.NAME == 'teja')
+            var response = await service.tx(req).get("Purchase_Orders")
+            console.log(response); 
 
-            console.log(filteredata)
+            return response
             
             
         } catch (error) {
