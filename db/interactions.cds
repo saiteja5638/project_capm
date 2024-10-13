@@ -1,9 +1,21 @@
 context  app.db {
 
+    entity Location {
+        ID      : UUID;
+        name    : String;
+        address : String;
+    }
+
+    entity Customer {
+        ID    : UUID;
+        name  : String;
+        email : String;
+    }
+
     entity User_data {
         key ID   : UUID;
             NAME : String(25);
-            Orders : Composition of many Purchase_Orders on   Orders.PURCHASEID = $self;
+          
             
     }
 
@@ -14,7 +26,6 @@ context  app.db {
 
     entity Purchase_Orders {
         key ID :UUID;
-            PURCHASEID:Association to User_data;
             PRODUCT_NAME:String(50);
             PRODUCT_DESC:String(50);
             PRODUCT_SER:String(25);
@@ -22,3 +33,16 @@ context  app.db {
     }
     
 }
+
+@cds.persistence.exists
+@cds.persistence.table
+
+entity PURCHASE_{
+    key PurchaseOrderID : UUID;
+        PRODUCT_NAME : String;
+        PRODUCT_DESC:String;
+        PRODUCT_SER:String;
+        PURCHASE_DATE:String;
+        UserName :String;
+}
+

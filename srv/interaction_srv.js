@@ -14,6 +14,40 @@ module.exports  =  async srv =>{
         }
     })
 
+    srv.on('Get_Data', async(req,res)=>{
+        try {
+
+            let get_data =  await cds.run(`SELECT 
+    p.ID AS PurchaseOrderID,
+    p.PRODUCT_NAME,
+    p.PRODUCT_DESC,
+    p.PRODUCT_SER,
+    p.PURCHASE_DATE,
+    u.NAME AS UserName
+FROM 
+    APP_DB_PURCHASE_ORDERS p
+INNER JOIN 
+    APP_DB_USER_DATA u
+ON 
+    p.ID = u.ID;`)
+
+     return {
+        get:"All the data is loaded"
+     }
+            
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    srv.on('Post_Data', async (req,res) =>{
+        try {
+            console.log(req.data)
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
     srv.on('Get_predication',async(req,res)=>{
         try {
          

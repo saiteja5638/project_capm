@@ -1,0 +1,5 @@
+COLUMN TABLE app_db_Customer (
+  ID NVARCHAR(36),
+  name NVARCHAR(5000),
+  email NVARCHAR(5000)
+)

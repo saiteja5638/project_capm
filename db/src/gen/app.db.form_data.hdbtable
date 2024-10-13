@@ -1,0 +1,5 @@
+COLUMN TABLE app_db_form_data (
+  ID NVARCHAR(20) NOT NULL,
+  FORM_NUM NVARCHAR(50),
+  PRIMARY KEY(ID)
+)

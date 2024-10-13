@@ -1,0 +1,7 @@
+VIEW catalog_Purchase_Orders AS SELECT
+  Purchase_Orders_0.ID,
+  Purchase_Orders_0.PRODUCT_NAME,
+  Purchase_Orders_0.PRODUCT_DESC,
+  Purchase_Orders_0.PRODUCT_SER,
+  Purchase_Orders_0.PURCHASE_DATE
+FROM app_db_Purchase_Orders AS Purchase_Orders_0

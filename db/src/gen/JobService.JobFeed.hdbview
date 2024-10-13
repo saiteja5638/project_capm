@@ -1,0 +1,5 @@
+VIEW JobService_JobFeed AS SELECT
+  JobFeed_0.ID,
+  JobFeed_0.jobTitle,
+  JobFeed_0.description
+FROM my_job_JobFeed AS JobFeed_0

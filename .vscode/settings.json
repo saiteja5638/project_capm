@@ -1,3 +1,4 @@
 {
-    "SAP HANA Project Explorer.bind.confirm automatic undeployment": false
+    "SAP HANA Project Explorer.bind.confirm automatic undeployment": false,
+    "SAP HANA Database Artifacts.lastSelectedTargetPath": "/home/user/projects/project_capm/db/src"
 }

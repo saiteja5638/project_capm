@@ -1,3 +1,6 @@
-POST  http://localhost:4004/odata/v4/catalog/Purchase_Orders
+POST  http://localhost:4004/v2/odata/v4/catalog/Post_Data
 Content-Type: application/json
 
+{
+    "DATA":"ascsc"
+}

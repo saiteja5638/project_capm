@@ -27,6 +27,7 @@ modules:
     requires:
       - name: project_capm-db
       - name: project_capm-destination
+      - name: capservsoauth
 
   - name: project_capm-db-deployer
     type: hdb
@@ -42,6 +43,15 @@ resources:
     parameters:
       service: hana
       service-plan: hdi-shared
+  - name: capservsoauth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: capservs-oauth-${org}-${space}
+        tenant-mode: dedicated      
   - name: project_capm-destination
     type: org.cloudfoundry.managed-service
     parameters:

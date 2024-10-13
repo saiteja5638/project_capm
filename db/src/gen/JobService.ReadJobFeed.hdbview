@@ -1,0 +1,4 @@
+VIEW JobService_ReadJobFeed AS SELECT
+  ReadJobFeed_0.ID,
+  ReadJobFeed_0.data
+FROM my_job_ReadJobFeed AS ReadJobFeed_0

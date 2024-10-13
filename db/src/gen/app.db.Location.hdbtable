@@ -1,0 +1,5 @@
+COLUMN TABLE app_db_Location (
+  ID NVARCHAR(36),
+  name NVARCHAR(5000),
+  address NVARCHAR(5000)
+)

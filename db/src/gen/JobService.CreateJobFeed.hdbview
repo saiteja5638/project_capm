@@ -1,0 +1,5 @@
+VIEW JobService_CreateJobFeed AS SELECT
+  CreateJobFeed_0.ID,
+  CreateJobFeed_0.status,
+  CreateJobFeed_0.message
+FROM my_job_CreateJobFeed AS CreateJobFeed_0

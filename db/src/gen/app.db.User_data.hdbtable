@@ -1,0 +1,5 @@
+COLUMN TABLE app_db_User_data (
+  ID NVARCHAR(36) NOT NULL,
+  NAME NVARCHAR(25),
+  PRIMARY KEY(ID)
+)

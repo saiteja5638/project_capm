@@ -1,0 +1,4 @@
+VIEW catalog_user_information AS SELECT
+  User_data_0.ID,
+  User_data_0.NAME
+FROM app_db_User_data AS User_data_0

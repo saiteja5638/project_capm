@@ -1,0 +1,4 @@
+VIEW catalog_form_data AS SELECT
+  form_data_0.ID,
+  form_data_0.FORM_NUM
+FROM app_db_form_data AS form_data_0

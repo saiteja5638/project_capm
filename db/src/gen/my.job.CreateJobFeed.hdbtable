@@ -1,0 +1,5 @@
+COLUMN TABLE my_job_CreateJobFeed (
+  ID NVARCHAR(36),
+  status NVARCHAR(5000),
+  message NVARCHAR(5000)
+)

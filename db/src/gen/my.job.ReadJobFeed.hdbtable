@@ -1,0 +1,4 @@
+COLUMN TABLE my_job_ReadJobFeed (
+  ID NVARCHAR(36),
+  data NVARCHAR(5000)
+)
