@@ -1,0 +1,11 @@
+GET  http://localhost:4004/odata/v4/catalog/Get_Data()
+Content-Type: application/json
+
+{
+    "DATA":"122333"
+}
+
+
+//
+
+

@@ -1,13 +1,13 @@
 namespace my.job;
 
 entity JobFeed {
-  ID : UUID;
+ key  ID : UUID;
   jobTitle : String;
   description : String;
 }
 
 entity CreateJobFeed {
-  ID : UUID;
+ key ID : UUID;
   status : String;
   message : String;
 }

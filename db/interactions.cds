@@ -37,7 +37,7 @@ context  app.db {
 @cds.persistence.exists
 @cds.persistence.table
 
-entity PURCHASE_{
+entity PURCHASE{
     key PurchaseOrderID : UUID;
         PRODUCT_NAME : String;
         PRODUCT_DESC:String;

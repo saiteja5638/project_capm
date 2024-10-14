@@ -13,7 +13,7 @@ build-parameters:
 modules:
   - name: project_capm-srv
     type: nodejs
-    path: gen/srv
+    path: srv
     parameters:
       buildpack: nodejs_buildpack
       readiness-health-check-type: http
@@ -27,7 +27,6 @@ modules:
     requires:
       - name: project_capm-db
       - name: project_capm-destination
-      - name: capservsoauth
 
   - name: project_capm-db-deployer
     type: hdb
@@ -42,16 +41,7 @@ resources:
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
-      service-plan: hdi-shared
-  - name: capservsoauth
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: xsuaa
-      service-plan: application
-      path: ./xs-security.json
-      config:
-        xsappname: capservs-oauth-${org}-${space}
-        tenant-mode: dedicated      
+      service-plan: hdi-shared     
   - name: project_capm-destination
     type: org.cloudfoundry.managed-service
     parameters:

@@ -1,23 +1,35 @@
 var cds = require('@sap/cds');
+const { INSERT } = require('@sap/cds/lib/ql/cds-ql');
 
 
-module.exports  =  async srv =>{
 
-    srv.before(['CREATE','UPDATE','DELETE'],'user_information', async(req,res)=>{
+module.exports = async srv => {
+
+    srv.on('Post_Data',async (req,res)=>{
         try {
-            if(req.data.ID=="21121547-d7cb-40a9-99b8-aa87b219486c")
-                {
-                    req.reject(401,"Your not a Vaild Customer")
-                }
+            let get_dataofPOC = req.data.DATA;
+            // let post_data = await cds.run(INSERT.into("table").entries(get_dataofPOC))
+
+           
         } catch (error) {
             console.log(error)
         }
     })
 
-    srv.on('Get_Data', async(req,res)=>{
+    srv.before(['CREATE', 'UPDATE', 'DELETE'], 'user_information', async (req, res) => {
+        try {
+            if (req.data.ID == "21121547-d7cb-40a9-99b8-aa87b219486c") {
+                req.reject(401, "Your not a Vaild Customer")
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    })
+
+    srv.on('Get_Data', async (req, res) => {
         try {
 
-            let get_data =  await cds.run(`SELECT 
+            let get_data = await cds.run(`SELECT 
     p.ID AS PurchaseOrderID,
     p.PRODUCT_NAME,
     p.PRODUCT_DESC,
@@ -29,28 +41,25 @@ FROM
 INNER JOIN 
     APP_DB_USER_DATA u
 ON 
-    p.ID = u.ID;`)
+    p.ID = u.ID`)
 
-     return {
-        get:"All the data is loaded"
-     }
-            
+    let get_filterRecords =  get_data.filter(i=>i.PURCHASEORDERID == 'xyz123')
+
+    console.log(get_filterRecords)
+
+            return {
+                get: "All the data is loaded"
+            }
+
         } catch (error) {
             console.log(error)
         }
     })
 
-    srv.on('Post_Data', async (req,res) =>{
-        try {
-            console.log(req.data)
-        } catch (error) {
-            console.log(error)
-        }
-    })
 
-    srv.on('Get_predication',async(req,res)=>{
+    srv.on('Get_predication', async (req, res) => {
         try {
-         
+
             var service = await cds.connect.to('cap_servs');
             let id = {
                 JOb_NAME: "test1",
@@ -61,10 +70,10 @@ ON
             }
             var response = await service.run(UPDATE("Config_Job_Status").set(new_value).where(id))
             return {
-                data:response
+                data: response
             }
-            
-            
+
+
         } catch (error) {
             console.log(error)
         }

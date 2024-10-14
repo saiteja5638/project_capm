@@ -1,5 +1,6 @@
 COLUMN TABLE my_job_JobFeed (
-  ID NVARCHAR(36),
+  ID NVARCHAR(36) NOT NULL,
   jobTitle NVARCHAR(5000),
-  description NVARCHAR(5000)
+  description NVARCHAR(5000),
+  PRIMARY KEY(ID)
 )
