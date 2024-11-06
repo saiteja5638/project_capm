@@ -5,12 +5,12 @@ const { INSERT } = require('@sap/cds/lib/ql/cds-ql');
 
 module.exports = async srv => {
 
-    srv.on('Post_Data',async (req,res)=>{
+    srv.on('Post_Data', async (req, res) => {
         try {
             let get_dataofPOC = req.data.DATA;
             // let post_data = await cds.run(INSERT.into("table").entries(get_dataofPOC))
 
-           
+
         } catch (error) {
             console.log(error)
         }
@@ -43,9 +43,9 @@ INNER JOIN
 ON 
     p.ID = u.ID`)
 
-    let get_filterRecords =  get_data.filter(i=>i.PURCHASEORDERID == 'xyz123')
+            let get_filterRecords = get_data.filter(i => i.PURCHASEORDERID == 'xyz123')
 
-    console.log(get_filterRecords)
+            console.log(get_filterRecords)
 
             return {
                 get: "All the data is loaded"

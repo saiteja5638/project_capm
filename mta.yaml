@@ -1,3 +1,4 @@
+---
 _schema-version: 3.3.0
 ID: project_capm
 version: 1.0.0
@@ -13,7 +14,7 @@ build-parameters:
 modules:
   - name: project_capm-srv
     type: nodejs
-    path: srv
+    path: gen/srv
     parameters:
       buildpack: nodejs_buildpack
       readiness-health-check-type: http
@@ -26,7 +27,7 @@ modules:
           srv-url: ${default-url}
     requires:
       - name: project_capm-db
-      - name: project_capm-destination
+      - name: capservsoauth
 
   - name: project_capm-db-deployer
     type: hdb
@@ -35,15 +36,20 @@ modules:
       buildpack: nodejs_buildpack
     requires:
       - name: project_capm-db
+  
 
 resources:
+  - name: capservsoauth
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json
+      config:
+        xsappname: capservs-oauth-${org}-${space}
+        tenant-mode: dedicated
   - name: project_capm-db
     type: com.sap.xs.hdi-container
     parameters:
       service: hana
-      service-plan: hdi-shared     
-  - name: project_capm-destination
-    type: org.cloudfoundry.managed-service
-    parameters:
-      service: destination
-      service-plan: lite
+      service-plan: hdi-shared

@@ -6,24 +6,27 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
-    "@sap-cloud-sdk/http-client": "^3.22.1",
-    "@sap/cds": "^8.1.1",
+    "@sap-cloud-sdk/http-client": "^3.20.0",
+    "@sap/cds": "^6.8.4",
     "@sap/cds-hana": "^2",
     "@sap/cds-odata-v2-adapter-proxy": "^1.9.21",
-    "@sap/hdi-deploy": "^5.0.1",
-    "@sap/xsenv": "^5.3.0",
-    "@sap/xssec": "^2.2.5",
-    "axios": "^1.6.5",
-    "basic-auth": "^2.0.1",
+    "@sap/xsenv": "^4.2.0",
+    "@sap/xssec": "^3",
+    "axios": "^1.6.6",
+    "cfenv": "^1.2.4",
     "express": "^4.18.2",
-    "passport": "^0.7.0",
-    "sql": "^0.78.0"
+    "fs": "^0.0.1-security",
+    "passport": "^0",
+    "path": "^0.12.7",
+    "sql": "^0.78.0",
+    "sqlite3": "^5.1.6"
   },
   "scripts": {
     "start": "cds-serve",
-    "undeploy": "cf undeploy sbp_hire --delete-services --delete-service-keys --delete-service-brokers",
+    "undeploy": "cf undeploy cap_servs --delete-services --delete-service-keys --delete-service-brokers",
     "build": "rimraf resources mta_archives && mbt build --mtar archive",
-    "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    "deploy": "cf deploy mta_archives/archive.mtar --retries 1",
+    "watch-test_app": "cds watch --open test_app/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "cds": {
     "hana": {
@@ -45,29 +48,14 @@
       "db": {
         "kind": "sql"
       },
-      "data": {
-        "model": "db/quotation.cds"
-      },
-      "cap_servs": {
-        "kind": "odata-v2",
-        "model": "srv/external/cap_servs",
-        "[development]": {
-          "credentials": {
-            "url": "https://sbpbtp-vcpprovider-sc0jeojq-dev-cap-servs-srv.cfapps.us10.hana.ondemand.com/v2/catalog"
-          }
-        },
-        "[production]": {
-          "credentials": {
-            "destination": "cap_servs",
-            "path": "v2/catalog"
-          }
-        }
+      "auth": {
+        "kind": "xsuaa"
       }
     }
   },
   "devDependencies": {
     "@sap/cds-dk": "^7",
-    "rimraf": "^3.0.2",
-    "sqlite3": "^5.1.7"
+    "@sap/ux-specification": "^1.120.6",
+    "rimraf": "^3.0.2"
   }
 }
